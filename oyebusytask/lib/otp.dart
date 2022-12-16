@@ -17,7 +17,7 @@ class _otpState extends State<otp> {
   TextEditingController otp = TextEditingController();
   TextEditingController phoneno = TextEditingController();
   bool isLoading = false;
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +42,7 @@ class _otpState extends State<otp> {
                 try {
                   final auth = FirebaseAuth.instance;
                   await auth.signInWithCredential(credentials);
-   final userexists = auth.currentUser!.uid;
+                  final userexists = auth.currentUser!.uid;
                   final doc = await FirebaseFirestore.instance
                       .collection('users')
                       .doc(userexists)
@@ -65,7 +65,7 @@ class _otpState extends State<otp> {
                   print(e.toString());
                 }
               },
-              child: Text('Kuch bhi'))
+              child: Text('Login'))
         ],
       ),
     );

@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_in_app_messaging/firebase_in_app_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:oyebusytask/main.dart';
 import 'package:oyebusytask/viewprofile.dart';
 
 import 'otp.dart';
@@ -14,6 +16,8 @@ class login extends StatefulWidget {
 }
 
 class _loginState extends State<login> {
+  FirebaseInAppMessaging _firebaseInAppMessaging =
+      FirebaseInAppMessaging.instance;
   TextEditingController phoneno = TextEditingController();
   bool isLoading = false;
   final auth = FirebaseAuth.instance;
@@ -48,6 +52,7 @@ class _loginState extends State<login> {
               ),
               ElevatedButton(
                   onPressed: () async {
+                    await _firebaseInAppMessaging.triggerEvent('myevent');
                     setState(() {
                       isLoading = true;
                     });
@@ -80,7 +85,7 @@ class _loginState extends State<login> {
                           });
                         });
                   },
-                  child: Text("Login"))
+                  child: Text("Get OTP"))
             ]),
       ),
     );
