@@ -38,8 +38,10 @@ class _upiiiState extends State<upiii> {
   Future<UpiResponse> initiateTransaction(UpiApp app) async {
     return _upiIndia.startTransaction(
       app: app,
-      receiverUpiId: "zishansorathiya111@okicici",
-      receiverName: 'Zishan Sorathiya',
+      // enter your upi id
+      receiverUpiId: "",
+
+      receiverName: '<--enter your name-->',
       transactionRefId: 'TestingUpiIndiaPlugin',
       transactionNote: 'Not actual. Just an example.',
       amount: 1.00,
